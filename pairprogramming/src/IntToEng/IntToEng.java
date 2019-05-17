@@ -35,8 +35,6 @@ public class IntToEng {
 			case 10:s="ten"; break;
 		}
     
-    		//String s2 = s.substring(0);
-    		//int n2 = s.indexOf(s.substring(0));
     	switch (tens) {
     		case 0: break;
     		case 2: s2 = "twenty "; break;

@@ -8,11 +8,9 @@ public class IntToEngTest {
 
 	@Test
 	public void ゼロから10まで変換するメソッド() {
-		fail("Not yet implemented");
-	IntToEng i=new IntToEng();
-	String expected ="ten";
-	String actual=i.translateEng(10);
-	assertThat(actual,is(expected));
+		String expected ="ten";
+		String actual=IntToEng.translateEng(10);
+		assertThat(actual,is(expected));
 	}
 
 }

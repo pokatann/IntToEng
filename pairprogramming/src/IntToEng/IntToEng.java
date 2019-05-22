@@ -15,6 +15,7 @@ public class IntToEng {
     // 数値を英訳する変換するメソッド
 
     static String translateEng(int n) {
+    	if(n==0)return "zero";
     	if (String.valueOf(n).length() == 1) {
     		return hahaha(n);
     	}
@@ -23,56 +24,66 @@ public class IntToEng {
         int tens = (n / 10) % 10; // (n % 100) / 10
         int ones = n % 10;     
         
+        String a="";
+    	if(hundreds!=0)a=" hundred ";
         if (tens == 0) {
-        	return hahaha(hundreds) +" hundred "+ hahaha(ones);
+        	if(ones==0)return hahaha(hundreds)+" hundred";//100,200
+        	return hahaha(hundreds) +a+ hahaha(ones);
         }
         
         if (tens == 1) {
-    	   if (ones == 0) return hahaha(hundreds) + " hundred "+"ten";
-    	   if (ones == 1) return hahaha(hundreds) + " hundred "+"eleven";
-    	   if (ones == 2) return hahaha(hundreds) + " hundred "+"twelve";
-    	   if (ones == 5) return hahaha(hundreds) + " hundred "+"fifteen";
+    	   if (ones == 0) return hahaha(hundreds) + a+"ten";//110
+    	   if (ones == 1) return hahaha(hundreds) + a+"eleven";
+    	   if (ones == 2) return hahaha(hundreds) + a+"twelve";
+    	   if (ones == 3) return hahaha(hundreds) + a+"thirteen";
+    	   if (ones == 5) return hahaha(hundreds) + a+"fifteen";
     	   else {
-    		   return hahaha(hundreds)+" hundred "+ hahaha(ones)+"teen ";
+    		   return hahaha(hundreds)+a+ hahaha(ones)+"teen ";
     	   }
         }
         
         if (tens == 2) {
-        	if (ones==0) return hahaha(hundreds) +" hundred "+"twenty";
+        	if (ones==0) return hahaha(hundreds) +a+"twenty";
         	else {
-        		return hahaha(hundreds) +" hundred "+"twenty "+ hahaha(ones);
+        		return hahaha(hundreds) +a+"twenty "+ hahaha(ones);
         	}
         }
         if (tens == 3) {
-    	   if (ones == 0) return hahaha(hundreds) +" hundred "+"thirty";
+    	   if (ones == 0) return hahaha(hundreds) +a+"thirty";
     	   else {
-    		   return hahaha(hundreds) +" hundred "+"thirty "+ hahaha(ones);
+    		   return hahaha(hundreds) +a+"thirty "+ hahaha(ones);
     	   }
         }
         
         if (tens == 4) {
-    	   if (ones == 0) return hahaha(hundreds) +" hundred "+"forty";
+    	   if (ones == 0) return hahaha(hundreds) +a+"forty";
     	   else {
-    		   return hahaha(hundreds) +" hundred "+"forty "+ hahaha(ones);
+    		   return hahaha(hundreds) +a+"forty "+ hahaha(ones);
     	   }
         }
         
         if (tens == 5) {
-    	   if (ones == 0) return hahaha(hundreds) +" hundred "+"fifty";
+    	   if (ones == 0) return hahaha(hundreds) +a+"fifty";
     	   else {
-    		   return hahaha(hundreds) +" hundred "+"fifty "+ hahaha(ones);
+    		   return hahaha(hundreds) +a+"fifty "+ hahaha(ones);
     	   }
     	}
+        if (tens == 8) {
+     	   if (ones == 0) return hahaha(hundreds) +a+"eighty";
+     	   else {
+     		   return hahaha(hundreds) +a+"eighty "+ hahaha(ones);
+     	   }
+     	}
         
         else {
-    	   return hahaha(hundreds) +" hundred "+hahaha(tens)+"ty "+ hahaha(ones);
+    	   return hahaha(hundreds) +a+hahaha(tens)+"ty "+ hahaha(ones);
         }
     }
     
     static String hahaha(int a){
     	String s = null;
     	switch (a) {
-    		case 0: s = "zero"; break;
+    		case 0: s = ""; break;
     		case 1: s = "one"; break;
     		case 2: s = "two"; break;
     		case 3: s = "three"; break;

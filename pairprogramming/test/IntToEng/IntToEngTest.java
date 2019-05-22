@@ -13,7 +13,7 @@ public class IntToEngTest {
 		assertThat(actual,is(expected));
 	}
 	@Test
-	public void 数19のテスト() {
+	public void 数19までのテスト() {
 		String expected ="eleven";
 		String actual=IntToEng.translateEng(11);
 		assertThat(actual,is(expected));

@@ -13,74 +13,66 @@ public class IntToEng {
     }
 
     // 数値を英訳する変換するメソッド
-
     static String translateEng(int n) {
-    	if(n==0)return "zero";
+    	if (n == 0) return "zero";
     	if (String.valueOf(n).length() == 1) {
-    		return hahaha(n);
+    		return digit(n);
     	}
-    	
-    	int hundreds = n / 100;
-        int tens = (n / 10) % 10; // (n % 100) / 10
+    	int thousands = n / 1000;
+    	int hundreds = (n / 100) % 10;
+        int tens = (n / 10) % 10;
         int ones = n % 10;     
         
-        String a="";
-    	if(hundreds!=0)a=" hundred ";
+        String s = "";
+        String h = "";
+        if (thousands != 0) s =" thousand ";
+    	if (hundreds != 0) h =" hundred ";
         if (tens == 0) {
-        	if(ones==0)return hahaha(hundreds)+" hundred";//100,200
-        	return hahaha(hundreds) +a+ hahaha(ones);
+        	if(hundreds != 0 && ones == 0) return digit(thousands) + s + digit(hundreds) +" hundred"; //100,200
+        	else return digit(thousands) + s + digit(hundreds) + h + digit(ones);
         }
         
         if (tens == 1) {
-    	   if (ones == 0) return hahaha(hundreds) + a+"ten";//110
-    	   if (ones == 1) return hahaha(hundreds) + a+"eleven";
-    	   if (ones == 2) return hahaha(hundreds) + a+"twelve";
-    	   if (ones == 3) return hahaha(hundreds) + a+"thirteen";
-    	   if (ones == 5) return hahaha(hundreds) + a+"fifteen";
-    	   else {
-    		   return hahaha(hundreds)+a+ hahaha(ones)+"teen ";
-    	   }
+    	   if (ones == 0) return digit(thousands) + s + digit(hundreds) + h + "ten"; //110
+    	   if (ones == 1) return digit(thousands) + s + digit(hundreds) + h + "eleven";
+    	   if (ones == 2) return digit(thousands) + s + digit(hundreds) + h + "twelve";
+    	   if (ones == 3) return digit(thousands) + s + digit(hundreds) + h + "thirteen";
+    	   if (ones == 5) return digit(thousands) + s + digit(hundreds) + h + "fifteen";
+    	   else return digit(thousands) + s + digit(hundreds) + h + digit(ones) + "teen ";
         }
         
         if (tens == 2) {
-        	if (ones==0) return hahaha(hundreds) +a+"twenty";
-        	else {
-        		return hahaha(hundreds) +a+"twenty "+ hahaha(ones);
-        	}
+        	if (ones==0) return digit(thousands) + s + digit(hundreds) + h + "twenty";
+        	else return digit(thousands) + s + digit(hundreds) + h + "twenty " + digit(ones);   	
         }
+        
         if (tens == 3) {
-    	   if (ones == 0) return hahaha(hundreds) +a+"thirty";
-    	   else {
-    		   return hahaha(hundreds) +a+"thirty "+ hahaha(ones);
-    	   }
+    	   if (ones == 0) return digit(thousands) + s + digit(hundreds) + h + "thirty";
+    	   else return digit(thousands) + s + digit(hundreds) + h + "thirty " + digit(ones);
         }
         
         if (tens == 4) {
-    	   if (ones == 0) return hahaha(hundreds) +a+"forty";
-    	   else {
-    		   return hahaha(hundreds) +a+"forty "+ hahaha(ones);
-    	   }
+    	   if (ones == 0) return digit(thousands) + s + digit(hundreds) + h + "forty";
+    	   else return digit(thousands) + s + digit(hundreds) + h + "forty " + digit(ones);
         }
         
         if (tens == 5) {
-    	   if (ones == 0) return hahaha(hundreds) +a+"fifty";
-    	   else {
-    		   return hahaha(hundreds) +a+"fifty "+ hahaha(ones);
-    	   }
+    	   if (ones == 0) return digit(thousands) + s + digit(hundreds) + h + "fifty";
+    	   else return digit(thousands) + s + digit(hundreds) + h + "fifty " + digit(ones);
     	}
+        
         if (tens == 8) {
-     	   if (ones == 0) return hahaha(hundreds) +a+"eighty";
-     	   else {
-     		   return hahaha(hundreds) +a+"eighty "+ hahaha(ones);
-     	   }
+     	   if (ones == 0) return digit(thousands) + s + digit(hundreds) + h + "eighty";
+     	   else return digit(thousands) + s + digit(hundreds) + h + "eighty " + digit(ones);
      	}
         
         else {
-    	   return hahaha(hundreds) +a+hahaha(tens)+"ty "+ hahaha(ones);
+    	   return digit(thousands) + s + digit(hundreds) + h + digit(tens) +"ty " + digit(ones);
         }
+        
     }
     
-    static String hahaha(int a){
+    static String digit(int a){
     	String s = null;
     	switch (a) {
     		case 0: s = ""; break;
